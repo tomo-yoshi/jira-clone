@@ -17,13 +17,11 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
       <div className="mx-auto max-w-screen-2xl p-4">
         <nav className="flex items-center justify-between">
             <Image src="/logo.svg" alt="logo" width={152} height={56} />
-            <Link href={isSignIn ? "/sign-up" : "/sign-in"}>
-              <Button asChild variant="secondary">
-                <Link href={isSignIn ? "/sign-up" : "/sign-in"}>
-                  {isSignIn ? "Sign up" : "Log in"}
-                </Link>
-              </Button>
-            </Link>
+            <Button asChild variant="secondary">
+              <Link href={isSignIn ? "/sign-up" : "/sign-in"}>
+                {isSignIn ? "Sign up" : "Log in"}
+              </Link>
+            </Button>
         </nav>
         <div className="flex flex-col items-center justify-center pt-4 md:pt-14">
           {children}
