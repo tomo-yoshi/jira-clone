@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { cn } from "@/lib/utils";
+import { QueryProviders } from "@/components/query-provider";
 
 import "./globals.css";
 
@@ -25,7 +26,9 @@ export default function RootLayout({
           "antialiased min-h-screen"
         )}
       >
-        {children}
+        <QueryProviders>
+          {children}
+        </QueryProviders>
       </body>
     </html>
   );
