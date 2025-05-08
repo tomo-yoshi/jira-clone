@@ -15,12 +15,14 @@ export const DottedSeparator = ({
   dotSize = "2px",
   gapSize = "6px",
   direction = "horizontal",
+  className,
 }: DottedSeparatorProps) => {
   const isHorizontal = direction === "horizontal";
 
   return (
     <div className={cn(
       isHorizontal ? "w-full flex items-center" : "h-full flex flex-col items-center",
+      className
     )}
     >
       <div

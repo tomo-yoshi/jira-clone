@@ -1,3 +1,5 @@
+'use client';
+
 import { z } from "zod";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -13,7 +15,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { registerSchema } from "@/features/auth/schemas";
 import { useRegister } from "@/features/auth/api/use-register";
 export const SignUpCard = () => {
-  const { mutate } = useRegister();
+  const { mutate, isPending } = useRegister();
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -50,6 +52,7 @@ export const SignUpCard = () => {
                     <Input
                       type="text"
                       placeholder="Enter your name"
+                      disabled={isPending}
                       {...field}
                     />
                   </FormControl>
@@ -66,6 +69,7 @@ export const SignUpCard = () => {
                     <Input
                       type="email"
                       placeholder="Enter email address"
+                      disabled={isPending}
                       {...field}
                     />
                   </FormControl>
@@ -90,7 +94,7 @@ export const SignUpCard = () => {
               )}
             />
             <Button type="submit" disabled={false} size="lg" className="w-full">
-              Sign up
+              Register
             </Button>
           </form>
         </Form>
@@ -99,11 +103,11 @@ export const SignUpCard = () => {
         <DottedSeparator />
       </div>
       <CardContent className="p-7 flex flex-col gap-y-4">
-        <Button variant="secondary" size="lg" className="w-full" disabled={false}>
+        <Button variant="secondary" size="lg" className="w-full" disabled={isPending}>
           <FcGoogle className="mr-2 size-5" />
           Sign up with Google
         </Button>
-        <Button variant="secondary" size="lg" className="w-full" disabled={false}>
+        <Button variant="secondary" size="lg" className="w-full" disabled={isPending}>
           <FaGithub className="mr-2 size-5" />
           Sign up with GitHub
         </Button>
